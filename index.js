@@ -18,9 +18,10 @@ app.get('/', (req, res) => {
     `);
 });
 
-//message sender
+//message sender(testing)
 function sendTextMessage() {
-  client.messages
+  client
+  .messages
   .create({
      body: 'Hello Chiedozie, Welcome to Dispatch-Zee Message Sender!',
      from: '+17407593853',
@@ -31,5 +32,32 @@ function sendTextMessage() {
     console.log('Congratulations!!!\nYour message was successfully sent.');
   }).catch(error => console.log(error.message));
 };
+
+// delivery end point
+// app.get('/delivery', (req. res) => {
+//   client.verify
+//   .services(accountSid)
+//   .notifications
+//   .create({
+//     to: `+${req.query.phonenumber}`,
+//     channel: req.query.channel,
+//   }).then((data) => {
+//     res.status(200).send(data)
+//   }).catch(error => console.log('Faild! ===>', error.message))
+// });
+
+//OTP verification
+// app.get('./verify', (req, res) => {
+//   client
+//   .verify
+//   .services(accountSid)
+//   .notificationsChecks
+//   .create({
+//     to: `+${req.query.phonenumber}`,
+//     code: req.query.code,
+//   }).then((data) => {
+//     res.status(200).send(data)
+//   }).catch(error => console.log('Faild to send OTP ===>>>', error.message))
+// });
 
 app.listen(port, () => console.log(`Dispatch-Zee Message Sender Server Is Running On https://localhost:${port} Kindly View On Your Web Browser`));
